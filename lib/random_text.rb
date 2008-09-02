@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'activesupport'
 
+$KCODE = "u"
+
 class RandomText
   class Randomized
     def initialize(data)
@@ -10,6 +12,10 @@ class RandomText
       s = @list.slice!(rand(@list.length))
       @list << s
       s
+    end
+    def unique(n)
+      raise "Dictionary has only #{@list.length} elements (you asked for n)" if n > @list.length
+      @list.sort{ rand - 0.5 }.slice(0, n)
     end
   end
 
@@ -21,6 +27,14 @@ class RandomText
 
   def word
     @words.get
+  end
+
+  def words(n)
+    Array.new(n){ word }.join(' ').capitalize
+  end
+  
+  def unique_words(n)
+    @words.unique(n)
   end
   
   def sentence
