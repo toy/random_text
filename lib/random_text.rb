@@ -1,50 +1,23 @@
+$:.unshift(File.dirname(__FILE__)) unless
+  $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
+
 require 'rubygems'
 require 'activesupport'
 
-$KCODE = "u"
+$KCODE = 'u'
 
-class RandomText
-  class Randomized
-    def initialize(data)
-      @list = data
-    end
-    def get
-      s = @list.slice!(rand(@list.length))
-      @list << s
-      s
-    end
-    def unique(n)
-      raise "Dictionary has only #{@list.length} elements (you asked for n)" if n > @list.length
-      @list.sort{ rand - 0.5 }.slice(0, n)
-    end
-  end
+require 'random_text/random_text'
+require 'random_text/random_strings'
 
-  def initialize(*args)
-    data = [*args].flatten.join(' ')
-    @words = Randomized.new(data.scan(/\w{4,}/).collect{ |w| w.chars.downcase.to_s }.uniq.map(&:chars))
-    @sentences = Randomized.new(data.scan(/\S[^.]*\./m).uniq)
-  end
+module RandomText
+  VERSION = '0.0.3'
 
-  def word
-    @words.get
-  end
-
-  def words(n)
-    Array.new(n){ word }.join(' ').capitalize
-  end
-  
-  def unique_words(n)
-    @words.unique(n)
-  end
-  
-  def sentence
-    @sentences.get
-  end
-  
-  def sentences(n)
-    Array.new(n){ sentence }.join(' ')
+  def self.add_dictionary(path)
+    const_name = File.basename(path, File.extname(path)).classify
+    self.const_set(const_name, RandomText.new(File.read(path)))
   end
 end
 
-require 'lorem'
-require 'vesna'
+Dir.glob(File.join(File.dirname(__FILE__), '..', 'resources', '*.txt')) do |path|
+  RandomText.add_dictionary(path)
+end
