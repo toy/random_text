@@ -1,10 +1,9 @@
-History.txt
-Manifest.txt
-README.rdoc
-Rakefile
-lib/random_text.rb
+CHANGELOG
 lib/random_text/random_strings.rb
 lib/random_text/random_text.rb
+lib/random_text.rb
+Rakefile
+README.rdoc
 resources/lorem.txt
 resources/vesna.txt
 script/console
@@ -16,3 +15,4 @@ spec/random_text_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+Manifest

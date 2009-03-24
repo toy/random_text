@@ -10,7 +10,7 @@ require 'random_text/random_text'
 require 'random_text/random_strings'
 
 module RandomText
-  VERSION = '0.0.3'
+  VERSION = '0.0.5'
 
   def self.add_dictionary(path)
     const_name = File.basename(path, File.extname(path)).classify
