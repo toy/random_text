@@ -10,5 +10,4 @@ Echoe.new('random_text', RandomText::VERSION) do |p|
   p.author = "toy"
   p.summary = "A library to generate random strings."
   p.runtime_dependencies = ['activesupport']
-  p.project = 'random-text'
 end
