@@ -4,6 +4,11 @@ require 'rake/clean'
 require 'fileutils'
 require 'echoe'
 
+load 'tasks/rspec.rake'
+
+task :default => :spec
+task :test
+
 require File.dirname(__FILE__) + '/lib/random_text'
 
 Echoe.new('random_text', RandomText::VERSION) do |p|
