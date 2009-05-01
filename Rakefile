@@ -9,9 +9,9 @@ load 'tasks/rspec.rake'
 task :default => :spec
 task :test
 
-require File.dirname(__FILE__) + '/lib/random_text'
+version = YAML.load_file(File.join(File.dirname(__FILE__), 'VERSION.yml')).join('.') rescue nil
 
-Echoe.new('random_text', RandomText::VERSION) do |p|
+Echoe.new('random_text', version) do |p|
   p.author = "toy"
   p.summary = "A library to generate random strings."
   p.runtime_dependencies = ['activesupport']
