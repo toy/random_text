@@ -1,8 +1,17 @@
 module RandomText
   class RandomText
     def initialize(text)
-      @words = RandomStrings.new(text.scan(/\w{3,}/).collect{ |w| w.mb_chars.downcase.to_s }.reject{ |w| w =~ /^[0-9]/ }.uniq.map(&:mb_chars))
-      @sentences = RandomStrings.new(text.split(/[\r\n]+/).map(&:strip).compact.delete_if(&:blank?).uniq)
+      @words = RandomStrings.new(text.scan(/\w{3,}/).
+              collect{ |w| chars(w).downcase.to_s }.
+              reject{ |w| w =~ /^[0-9]/ }.
+              uniq.map{ |w| chars(w) })
+      @sentences = RandomStrings.new(text.split(/[\r\n]+/).
+              map(&:strip).compact.
+              delete_if(&:blank?).uniq)
+    end
+
+    def chars(s)
+      s.respond_to?(:mb_chars) ? s.mb_chars : s.chars
     end
 
     def word
