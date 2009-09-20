@@ -1,8 +1,0 @@
-v0.0.6.2 2009-04-24 rake spec
-v0.0.6.1 2009-04-23 random_text, not random-text
-v0.0.6 2009-04-22 added words(:all) and sentences(:all), added specs, fixed bugs
-v0.0.5 2008-11-03 Moved to echoe
-v0.0.4 2008-11-03 Moved to newgem
-v0.0.3 2008-11-03 Refactored
-v0.0.2 2008-11-03 Added words and unique words; setting $KCODE
-v0.0.1 2008-11-03 Initial release
