@@ -34,5 +34,13 @@ module RandomText
     def sentences(n = :all)
       @sentences.get(n)
     end
+
+    def paragraph
+      @sentences.get(5).join(' ')
+    end
+
+    def paragraphs(n)
+      Array.new(n){ paragraph }
+    end
   end
 end
