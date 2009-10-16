@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby -KU
+
+require File.dirname(__FILE__) + '/../lib/random_text'
+
+RandomText.run(ARGV)

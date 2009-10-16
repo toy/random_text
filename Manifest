@@ -2,13 +2,15 @@ Manifest
 README.rdoc
 Rakefile
 VERSION.yml
+bin/lorem
+bin/vesna
 lib/random_text.rb
+lib/random_text/dictionary.rb
 lib/random_text/random_strings.rb
-lib/random_text/random_text.rb
 resources/lorem.txt
 resources/vesna.txt
+spec/random_text/dictionary_spec.rb
 spec/random_text/random_string_spec.rb
-spec/random_text/random_text_spec.rb
 spec/random_text_spec.rb
 spec/spec.opts
 spec/spec_helper.rb

@@ -16,7 +16,7 @@ Class to make usage of http://vesna.yandex.ru/ and http://lipsum.com/ easier
 
 == REQUIREMENTS:
 
-* Activesupport (to work with non latin chars)
+* Ruby :)
 
 == INSTALL:
 

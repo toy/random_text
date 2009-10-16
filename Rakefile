@@ -10,7 +10,7 @@ version = YAML.load_file(Pathname(__FILE__).dirname + 'VERSION.yml').join('.') r
 echoe = Echoe.new('random_text', version) do |p|
   p.author = 'toy'
   p.summary = 'A library to generate random strings.'
-  p.runtime_dependencies = ['activesupport']
+  p.project = 'toytoy'
 end
 
 desc "Replace system gem with symlink to this folder"

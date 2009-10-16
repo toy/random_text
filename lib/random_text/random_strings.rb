@@ -1,4 +1,4 @@
-module RandomText
+class RandomText
   class RandomStrings < Array
     def get(count = nil)
       case count
@@ -19,6 +19,10 @@ module RandomText
         raise "Dictionary has only #{length} elements (you asked for n)" if count > length
         get(:all).slice(0, count)
       end
+    end
+
+    def rand
+      self[Kernel.rand(length)]
     end
   end
 end

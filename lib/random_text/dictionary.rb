@@ -1,17 +1,13 @@
-module RandomText
-  class RandomText
+class RandomText
+  class Dictionary
     def initialize(text)
-      @words = RandomStrings.new(text.scan(/\w{3,}/).
-              collect{ |w| chars(w).downcase.to_s }.
-              reject{ |w| w =~ /^[0-9]/ }.
-              uniq.map{ |w| chars(w) })
-      @sentences = RandomStrings.new(text.split(/[\r\n]+/).
+      @words = RandomStrings.new(text.scan(/\w{3,}/u).
+              collect{ |w| RandomText.downcase(w) }.
+              reject{ |w| w =~ /^[0-9]/u }.
+              uniq.map{ |w| w })
+      @sentences = RandomStrings.new(text.split(/[\r\n]+/u).
               map(&:strip).compact.
-              delete_if(&:blank?).uniq)
-    end
-
-    def chars(s)
-      s.respond_to?(:mb_chars) ? s.mb_chars : s.chars
+              delete_if(&:empty?).uniq)
     end
 
     def word
