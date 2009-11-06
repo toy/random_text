@@ -5,7 +5,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 require 'random_text/dictionary'
 require 'random_text/random_strings'
 
-class RandomText
+module RandomText
   class << self
     def dictionaries
       @dictionaries ||= {}

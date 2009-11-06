@@ -1,4 +1,4 @@
-class RandomText
+module RandomText
   class Dictionary
     def initialize(text)
       @words = RandomStrings.new(text.scan(/\w{3,}/u).

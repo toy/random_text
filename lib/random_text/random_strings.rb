@@ -1,4 +1,4 @@
-class RandomText
+module RandomText
   class RandomStrings < Array
     def get(count = nil)
       case count
