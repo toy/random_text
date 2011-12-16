@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name        = 'random_text'
-  s.version     = '1.0.2.2'
+  s.version     = '1.1.0'
   s.summary     = %q{Library to generate random strings}
   s.homepage    = "http://github.com/toy/#{s.name}"
   s.authors     = ['Ivan Kuchin']
