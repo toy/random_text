@@ -2,4 +2,4 @@
 
 require 'random_text'
 
-RandomText.run(ARGV)
+RandomText.run(File.basename($0), ARGV)

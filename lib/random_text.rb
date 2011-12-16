@@ -18,10 +18,9 @@ module RandomText
       dictionaries[const_name] = dictionary
     end
 
-    def run(args)
+    def run(binary, args)
       arg = args.join(' ').strip.downcase
       arg = 'p' if arg.empty?
-      binary = File.basename($0)
       if m = arg.match(/^(\d+)?\s*(p|w|s|u)/)
         number = m[1] && m[1].to_i
         dictionary = dictionaries[classify(binary)]

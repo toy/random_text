@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + '/../spec_helper.rb'
+require 'stringio'
 
 WORD_R = /^\w+$/
 SENTENCE_RS = '\w+([,;]?\W\w+)+[.!?]'
@@ -80,8 +81,16 @@ describe Dictionary do
 end
 
 describe "binaries" do
+  def lorem(*args)
+    previous_stdout, $stdout = $stdout, StringIO.new
+    RandomText.run('lorem', args)
+    $stdout.string
+  ensure
+    $stdout = previous_stdout
+  end
+
   it "should return 1 paragraph by default" do
-    IO.popen('bin/lorem', &:read).strip.should =~ PARAGRAPH_R
+    lorem(&:read).strip.should =~ PARAGRAPH_R
   end
 
   {
@@ -93,11 +102,11 @@ describe "binaries" do
     specifiers.each do |specifier|
       describe "with specifier #{specifier}" do
         it "should return #{specifiers[0]}" do
-          IO.popen("bin/lorem #{specifier}", &:read).strip.should =~ reg
+          lorem(specifier).strip.should =~ reg
         end
 
         it "should return 5 #{specifiers[1]}" do
-          lines = IO.popen("bin/lorem 5 #{specifier}", &:readlines).map(&:strip)
+          lines = lorem(5, specifier).split(/[\n\r]+/)
           lines.length.should == 5
           lines.each{ |line| line.should =~ reg }
         end
